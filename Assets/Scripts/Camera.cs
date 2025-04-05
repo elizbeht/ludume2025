@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    public GameObject player;
-
+    GameObject player;
+    void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     // Update is called once per frame
     void Update()
     {
