@@ -21,11 +21,13 @@ public class Moving : MonoBehaviour
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 transform.position += new Vector3(0.15f, 0, 0);
+                 transform.localScale = new Vector3(1, 1, 1);
             }
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.position += new Vector3(-0.15f, 0, 0);
+                transform.localScale = new Vector3(-1, 1, 1);
             }
         }
     }
