@@ -4,12 +4,14 @@ using System.Collections;
 
 public class MovingShark : MonoBehaviour
 {
-    GameObject player; 
+    GameObject player;
     Int16 direction;
     private Boolean isEating = false;
+    Animator animator;
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,6 +22,7 @@ public class MovingShark : MonoBehaviour
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         if (player.transform.position.x > transform.position.x)
@@ -34,14 +37,27 @@ public class MovingShark : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!isEating)
-        {
+        if (!isEating) {
             if (Math.Abs(transform.position.y - player.transform.position.y) < 6)
             {
                 transform.position += new Vector3(direction * 0.07f, -0.02f, 0);
+            }
+        }
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        if (distanceToPlayer < 2f)
+        {
+            if (animator != null)
+            {
+                animator.SetBool("isAttacking", true);
+            }
+        }
+        else
+        {
+            if (animator != null)
+            {
+                animator.SetBool("isAttacking", false);
             }
         }
     }
