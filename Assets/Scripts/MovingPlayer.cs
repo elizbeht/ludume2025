@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Moving : MonoBehaviour
 {
-    private Boolean isDeath = false;
+    private bool isDeath = false;
     public float moveSpeed = 5f; // Скорость движения
     public float fallSpeed = 2f; // Скорость падения
     public AudioSource audioSource; // Ссылка на компонент AudioSource
@@ -32,13 +32,16 @@ public class Moving : MonoBehaviour
                 transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
                 transform.localScale = new Vector3(2, 2, 2);
             }
-
+            
             // Движение влево
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.position += new Vector3(-moveSpeed * Time.deltaTime, 0, 0);
                 transform.localScale = new Vector3(-2, 2, 2);
             }
+            
+            PlayerStats.depth += 1;
+            Debug.Log(PlayerStats.depth);
         }
     }
     
