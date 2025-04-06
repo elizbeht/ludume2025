@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Moving : MonoBehaviour
 {
@@ -8,8 +10,7 @@ public class Moving : MonoBehaviour
     {
         if (other.CompareTag("Shark"))
         {
-            isDeath = true;
-            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            Die();
         }
     }
     // Update is called once per frame
@@ -30,5 +31,26 @@ public class Moving : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
             }
         }
+    }
+    
+    public void Die()
+    {
+        
+        isDeath = true;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        
+        // Сохраняем позицию смерти
+        Vector3 deathPosition = transform.position;
+        DeathDataSaver.SaveDeathPosition(deathPosition);
+        StartCoroutine(TimeoutCoroutine(3f));
+    }
+    
+    IEnumerator TimeoutCoroutine(float delay)
+    {
+        Debug.Log("Начало таймаута");
+        yield return new WaitForSeconds(delay);
+        Debug.Log("Таймаут завершён");
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
