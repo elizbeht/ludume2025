@@ -17,6 +17,7 @@ public class Moving : MonoBehaviour
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             PlayerStats.oxygen-=2;
+            PlayerStats.depth+=1;
             transform.position += new Vector3(PlayerStats.speedX, 0, 0);
         }
 
@@ -28,5 +29,7 @@ public class Moving : MonoBehaviour
         if(PlayerStats.oxygen==0){
             //Die();
         }
+        PlayerStats.depth+=1;
+        Debug.Log(PlayerStats.depth);
     }
 }
