@@ -1,28 +1,29 @@
-using System;
 using UnityEngine;
 
-public class MovingFIsh : MonoBehaviour
+public class MovingFish : MonoBehaviour
 {
-    GameObject player; 
-    Int16 direction;
+    [Header("Movement Settings")]
+    [SerializeField] private float horizontalSpeed = 2.5f; // Скорость горизонтального движения
+    [SerializeField] private float verticalSpeed = 1.5f;   // Скорость вертикального движения
+    [SerializeField] private float followThreshold = 6f;   // Порог по Y для начала движения
+
+    private GameObject player; 
+    private int direction; // Изменил Int16 на int (более стандартный выбор)
+    
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogError("Player not found! Make sure player has 'Player' tag.");
+        }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
-        if (player.transform.position.x > transform.position.x)
-        {
-            direction = 1;
-            transform.Rotate(0,0,0);
-        }
-        else
-        {
-            direction = -1;
-            transform.Rotate(0,200,0);
-        }
+        DetermineInitialDirection();
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -31,12 +32,36 @@ public class MovingFIsh : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Math.Abs(transform.position.y - player.transform.position.y) < 6)
+        if (ShouldFollowPlayer())
         {
-            transform.position += new Vector3(direction * 0.05f, -0.03f, 0);
+            MoveFish();
         }
+    }
+
+    private void DetermineInitialDirection()
+    {
+        if (player != null)
+        {
+            direction = player.transform.position.x > transform.position.x ? 1 : -1;
+            transform.rotation = Quaternion.Euler(0, direction == 1 ? 0 : 180, 0);
+            // Исправил поворот с 200 на 180 градусов (стандартный разворот)
+        }
+    }
+
+    private bool ShouldFollowPlayer()
+    {
+        return player != null && Mathf.Abs(transform.position.y - player.transform.position.y) < followThreshold;
+    }
+
+    private void MoveFish()
+    {
+        Vector3 movement = new Vector3(
+            direction * horizontalSpeed * Time.deltaTime,
+            -verticalSpeed * Time.deltaTime,
+            0);
+            
+        transform.position += movement;
     }
 }
