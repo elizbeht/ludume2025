@@ -24,7 +24,7 @@ public class Moving : MonoBehaviour
         if (!isDeath)
         {
             // Падение с учетом времени между кадрами
-            transform.position += new Vector3(0, -fallSpeed * Time.deltaTime, 0);
+            transform.position += new Vector3(0, -PlayerStats.speedY * Time.deltaTime, 0);
             
             // Движение вправо
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
@@ -44,7 +44,6 @@ public class Moving : MonoBehaviour
     
     public void Die()
     {
-        
         isDeath = true;
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         
@@ -74,3 +73,4 @@ public class Moving : MonoBehaviour
     }
 
 }
+
