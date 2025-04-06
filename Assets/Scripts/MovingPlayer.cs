@@ -19,6 +19,18 @@ public class Moving : MonoBehaviour
             PlayerStats.oxygen-=2;
             PlayerStats.depth+=1;
             transform.position += new Vector3(PlayerStats.speedX, 0, 0);
+            transform.position += new Vector3(0, -0.05f, 0);
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.position += new Vector3(0.15f, 0, 0);
+                 transform.localScale = new Vector3(1, 1, 1);
+            }
+
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.position += new Vector3(-0.15f, 0, 0);
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))

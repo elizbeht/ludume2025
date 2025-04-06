@@ -15,10 +15,12 @@ public class MovingFIsh : MonoBehaviour
         if (player.transform.position.x > transform.position.x)
         {
             direction = 1;
+            transform.Rotate(0,0,0);
         }
         else
         {
             direction = -1;
+            transform.Rotate(0,200,0);
         }
     }
     void OnTriggerEnter2D(Collider2D other)
