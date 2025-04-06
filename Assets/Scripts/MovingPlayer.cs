@@ -54,6 +54,8 @@ public class Moving : MonoBehaviour
         Vector3 deathPosition = transform.position;
         DeathDataSaver.SaveDeathPosition(deathPosition);
         StartCoroutine(TimeoutCoroutine(1f));
+        PlayerStats.ateFishes=0;
+        PlayerStats.depth=0;
         
     }
     
