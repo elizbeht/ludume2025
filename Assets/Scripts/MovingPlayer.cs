@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class Moving : MonoBehaviour
 {
     private Boolean isDeath = false;
+    public float moveSpeed = 5f; // Скорость движения
+    public float fallSpeed = 2f; // Скорость падения
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Shark"))
@@ -13,22 +16,26 @@ public class Moving : MonoBehaviour
             Die();
         }
     }
-    // Update is called once per frame
+    
     void Update()
     {
         if (!isDeath)
         {
-            transform.position += new Vector3(0, -0.05f, 0);
+            // Падение с учетом времени между кадрами
+            transform.position += new Vector3(0, -fallSpeed * Time.deltaTime, 0);
+            
+            // Движение вправо
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                transform.position += new Vector3(0.15f, 0, 0);
-                 transform.localScale = new Vector3(1, 1, 1);
+                transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                transform.localScale = new Vector3(2, 2, 2);
             }
 
+            // Движение влево
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.position += new Vector3(-0.15f, 0, 0);
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.position += new Vector3(-moveSpeed * Time.deltaTime, 0, 0);
+                transform.localScale = new Vector3(-2, 2, 2);
             }
         }
     }
