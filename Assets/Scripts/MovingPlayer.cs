@@ -8,6 +8,8 @@ public class Moving : MonoBehaviour
     private Boolean isDeath = false;
     public float moveSpeed = 5f; // Скорость движения
     public float fallSpeed = 2f; // Скорость падения
+    public AudioSource audioSource; // Ссылка на компонент AudioSource
+    public AudioClip hitSound; // Звук поражения
     
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -49,15 +51,26 @@ public class Moving : MonoBehaviour
         // Сохраняем позицию смерти
         Vector3 deathPosition = transform.position;
         DeathDataSaver.SaveDeathPosition(deathPosition);
-        StartCoroutine(TimeoutCoroutine(3f));
+        StartCoroutine(TimeoutCoroutine(1f));
+        
     }
     
     IEnumerator TimeoutCoroutine(float delay)
     {
+        PlayHitSound();
         Debug.Log("Начало таймаута");
         yield return new WaitForSeconds(delay);
         Debug.Log("Таймаут завершён");
         
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("StartScene");
     }
+
+    void PlayHitSound()
+    {
+        if (audioSource != null && hitSound != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+        }
+    }
+
 }
