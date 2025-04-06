@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Moving : MonoBehaviour
 {
-    private Boolean isDeath = false;
+    private bool isDeath = false;
     public float moveSpeed = 5f; // Скорость движения
     public float fallSpeed = 2f; // Скорость падения
     public AudioSource audioSource; // Ссылка на компонент AudioSource
@@ -24,7 +24,7 @@ public class Moving : MonoBehaviour
         if (!isDeath)
         {
             // Падение с учетом времени между кадрами
-            transform.position += new Vector3(0, -fallSpeed * Time.deltaTime, 0);
+            transform.position += new Vector3(0, -PlayerStats.speedY * Time.deltaTime, 0);
             
             // Движение вправо
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
@@ -32,19 +32,21 @@ public class Moving : MonoBehaviour
                 transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
                 transform.localScale = new Vector3(2, 2, 2);
             }
-
+            
             // Движение влево
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.position += new Vector3(-moveSpeed * Time.deltaTime, 0, 0);
                 transform.localScale = new Vector3(-2, 2, 2);
             }
+            
+            PlayerStats.depth += 1;
+            Debug.Log(PlayerStats.depth);
         }
     }
     
     public void Die()
     {
-        
         isDeath = true;
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         
@@ -52,6 +54,8 @@ public class Moving : MonoBehaviour
         Vector3 deathPosition = transform.position;
         DeathDataSaver.SaveDeathPosition(deathPosition);
         StartCoroutine(TimeoutCoroutine(1f));
+        PlayerStats.ateFishes=0;
+        PlayerStats.depth=0;
         
     }
     
@@ -74,3 +78,4 @@ public class Moving : MonoBehaviour
     }
 
 }
+

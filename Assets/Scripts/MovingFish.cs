@@ -28,6 +28,7 @@ public class MovingFish : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            PlayerStats.ateFishes+=1;
             gameObject.SetActive(false);
         }
     }
