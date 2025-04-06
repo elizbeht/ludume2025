@@ -16,12 +16,17 @@ public class Moving : MonoBehaviour
         transform.position += new Vector3(0, -PlayerStats.speedY, 0);
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
+            PlayerStats.oxygen-=2;
             transform.position += new Vector3(PlayerStats.speedX, 0, 0);
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
+            PlayerStats.oxygen-=2;
             transform.position += new Vector3(-PlayerStats.speedX, 0, 0);
+        }
+        if(PlayerStats.oxygen==0){
+            //Die();
         }
     }
 }
