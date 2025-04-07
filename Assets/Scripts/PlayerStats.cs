@@ -8,5 +8,5 @@ public static class PlayerStats
   public static Int16 oxygen = 1000;
   public static int ateFishes = 0;
   public static Int16 lives = 9;
-  public static Int16 depth = 0;
+  public static float depth = 0;
 }

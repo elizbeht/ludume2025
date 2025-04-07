@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EgorScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 35c6945e4a453e7f6aa2861aab503262
   - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: 3df5ee525bca1ef618d029eeebc34aac
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: c18a607d30929c85aaefeaacce95db5b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestAnimationScene.unity
     guid: 1624feeea2119b1ccb15c11ff346bee6
   m_configObjects:

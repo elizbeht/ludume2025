@@ -1269,7 +1269,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2039,9 +2039,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1158528208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 396.75, y: 215.75}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -99.99994, y: -25}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &991565526
@@ -2142,7 +2142,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -108.46362, y: 0, z: 0, w: 0}
+  m_margin: {x: -265.95477, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2599,10 +2599,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3315,9 +3315,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1158528208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -396.75, y: 215.75}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -24.73999}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1431918881
@@ -3418,7 +3418,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -115.97037, w: 0}
+  m_margin: {x: 0, y: 0, z: -426.51617, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4790,11 +4790,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4673307877976554931, guid: 27d230f63fcfd6b6383410e1ad205f9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.29
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 4673307877976554931, guid: 27d230f63fcfd6b6383410e1ad205f9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23
+      value: 1.67
       objectReference: {fileID: 0}
     - target: {fileID: 4673307877976554931, guid: 27d230f63fcfd6b6383410e1ad205f9a, type: 3}
       propertyPath: m_LocalPosition.z
